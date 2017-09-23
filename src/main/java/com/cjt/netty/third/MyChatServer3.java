@@ -1,7 +1,6 @@
 package com.cjt.netty.third;
 
 
-import com.cjt.netty.second.MyServerInitializer2;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.EventLoopGroup;

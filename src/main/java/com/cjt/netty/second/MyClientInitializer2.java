@@ -10,7 +10,7 @@ import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 import io.netty.util.CharsetUtil;
 
-public class MyClintInitializer2 extends ChannelInitializer<SocketChannel> {
+public class MyClientInitializer2 extends ChannelInitializer<SocketChannel> {
 
     @Override
     protected void initChannel(SocketChannel ch) throws Exception {

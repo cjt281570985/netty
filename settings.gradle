@@ -1,3 +1,5 @@
 rootProject.name = 'netty'
 
-//git@github.com:cjt281570985/netty.git
+// git@github.com:cjt281570985/netty.git
+
+// protoc --java_out=src/main/java src/protobuf/Person.proto

@@ -1,0 +1,14 @@
+syntax = "proto2";
+package com.cjt.protobuf;
+option optimize_for = SPEED;
+option java_package = "com.cjt.netty.sixth";
+option java_outer_classname = "MyDataInfo";
+
+message Person {
+    required string name = 1;
+    optional int32 age = 2;
+    optional string address = 3;
+}
+
+
+// protoc --java_out=src/main/java src/protobuf/Person.proto

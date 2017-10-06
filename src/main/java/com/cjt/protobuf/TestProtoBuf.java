@@ -16,9 +16,7 @@ public class TestProtoBuf {
         System.out.println(student1.getAddress());
 
 
-        for (int i = 0; i < 10; i++) {
-            System.out.println( new Random().nextInt(3));;
-        }
+
     }
 
 

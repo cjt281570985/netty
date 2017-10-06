@@ -17,8 +17,8 @@ public class ThriftServer {
         THsHaServer.Args arg = new THsHaServer.Args(socket).minWorkerThreads(2).maxWorkerThreads(4);
         PersonService.Processor<PersonServiceImpl> processor = new PersonService.Processor<>(new PersonServiceImpl());
 
-        arg.protocolFactory(new TCompactProtocol.Factory());
-        arg.transportFactory(new TFramedTransport.Factory());
+        arg.protocolFactory(new TCompactProtocol.Factory());//协议层上所用到的对象
+        arg.transportFactory(new TFramedTransport.Factory());//传输层所用到的对象
         arg.processorFactory(new TProcessorFactory(processor));
 
 

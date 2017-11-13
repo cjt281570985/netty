@@ -17,5 +17,8 @@ public class NioTest10 {
         FileLock fileLock = channel.lock(3, 6, true);//true共享锁,false排插锁
         System.out.println("valid: " + fileLock.isValid());
         System.out.println("lock type: " + fileLock.isShared());
+
+        fileLock.release();//释放锁
+        randomAccessFile.close();
     }
 }

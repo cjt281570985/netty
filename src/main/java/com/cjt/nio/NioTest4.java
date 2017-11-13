@@ -16,7 +16,7 @@ public class NioTest4 {
         FileChannel inputChannel = inputStream.getChannel();
         FileChannel outputChannel = outputStream.getChannel();
 
-        ByteBuffer buffer = ByteBuffer.allocate(78);
+        ByteBuffer buffer = ByteBuffer.allocate(500);
 
         System.out.println("while limit: " + buffer.limit());
         System.out.println("while capacity: " + buffer.capacity());
@@ -24,7 +24,7 @@ public class NioTest4 {
 
         while (true) {
 
-            buffer.clear(); //注释此行会发生什么情况36
+           // buffer.clear(); //注释此 P和L的位置是同一个,不可能再写,读取到就为0 36
             int read = inputChannel.read(buffer);
             System.out.println("read: " + read);
 

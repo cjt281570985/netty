@@ -40,6 +40,7 @@ public class NioTest11 {
                         + ", limit: " + buffer.limit()).forEach(System.out::println);
             }
 
+            System.out.println("--------------------------------");
             //写之前需要调用 flip()
             Arrays.asList(buffers).forEach(buffer -> buffer.flip());
 
@@ -49,7 +50,7 @@ public class NioTest11 {
                 bytesWritten += r;
             }
 
-            Arrays.asList(buffers).forEach(Buffer -> Buffer.clear());
+            Arrays.asList(buffers).forEach(buffer -> buffer.clear());
 
             System.out.println("bytesRead: " + byteRead + ", bytesWritten: "
                     + bytesWritten + ",messageLength: " + messageLength);

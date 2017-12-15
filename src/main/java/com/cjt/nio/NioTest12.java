@@ -65,7 +65,7 @@ public class NioTest12 {
         }
 
         while (true) {
-            int numbers = selector.select();
+            int numbers = selector.select(); //返回key的数量
             System.out.println("numbers: " + numbers);
 
             Set<SelectionKey> selectionKeys = selector.selectedKeys();

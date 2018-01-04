@@ -24,7 +24,7 @@ public class NioTest0 {
         System.out.println("--------------------------------");
         //又要读又要写,需要加入flip(), 让它实现状态的翻转
         buffer.flip();
-        System.out.println("after filp limit: " + buffer.limit());
+        System.out.println("after filp limit: " + buffer.limit());   //5
 
         while (buffer.hasRemaining()) {
 

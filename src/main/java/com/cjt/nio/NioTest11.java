@@ -8,13 +8,15 @@ import java.nio.channels.SocketChannel;
 import java.util.Arrays;
 
 /**
- * 关于Bufferr的Scattering与Gathering  16:00应用场景说
+ * 关于Bufferr的Scattering(分散)与Gathering(聚集)  16:00应用场景说
  * 使用 telnet localhost 8899
+ * 实现数据的分文别类
  */
 public class NioTest11 {
 
     public static void main(String[] args) throws Exception{
 
+        //网络程序,需要服务器和客户端
         ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
         InetSocketAddress address = new InetSocketAddress(8899);
         serverSocketChannel.socket().bind(address);

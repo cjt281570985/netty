@@ -23,7 +23,6 @@ public class NioTest8 {
         System.out.println("while position: " + buffer.position());
 
         while (true) {
-
             buffer.clear();
             int read = inputChannel.read(buffer);
             System.out.println("read: " + read);

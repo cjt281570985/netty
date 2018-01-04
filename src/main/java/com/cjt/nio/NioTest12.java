@@ -23,6 +23,7 @@ public class NioTest12 {
         ports[1] = 5001;
         ports[2] = 5002;
         ports[3] = 5003;
+        ports[4] = 5004;
 
         //一个选择器持续保持打开的状态,直到我们调用它的close()
         Selector selector = Selector.open();
@@ -47,6 +48,9 @@ public class NioTest12 {
         //3.如果在步骤2的时候,有任何被取消的key添加到cancelled-key中,那么它会在步骤1被处理
 
         //无论一个选择操作是等待阻塞一个或多个通道变成可用,以及如果是这样,那么等待多久,那么它们是这3个方法(select(),select(long),selectNow())的一个本质区别
+
+
+        //41 17:20并发...看doc
 
         System.out.println(SelectorProvider.provider().getClass());
         System.out.println(sun.nio.ch.DefaultSelectorProvider.create().getClass());
@@ -81,7 +85,7 @@ public class NioTest12 {
                     socketChannel.configureBlocking(false);//配置非阻塞
 
                     socketChannel.register(selector, SelectionKey.OP_READ);
-
+                    //将其从key中移除,否则还会继续监听此事件.  此链接已经创建
                     iter.remove();
                     System.out.println("获得客户端的链接: " + socketChannel);
                 } else if (selectionKey.isReadable()) {

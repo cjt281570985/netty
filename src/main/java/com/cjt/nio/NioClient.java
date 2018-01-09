@@ -1,7 +1,16 @@
 package com.cjt.nio;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.InetSocketAddress;
+import java.nio.ByteBuffer;
+import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.SocketChannel;
+import java.time.LocalDateTime;
+import java.util.Set;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class NioClient {
 
@@ -13,6 +22,65 @@ public class NioClient {
             socketChannel.configureBlocking(false);
 
             Selector selector = Selector.open();
+            socketChannel.register(selector, SelectionKey.OP_CONNECT);
+            socketChannel.connect((new InetSocketAddress("127.0.0.1", 8899)));
+
+            while (true) {
+                selector.select();
+                Set<SelectionKey> keySet = selector.selectedKeys();
+
+                for (SelectionKey selectionKey : keySet) {
+                    //已经建立好连接
+                    if (selectionKey.isConnectable()) {
+                        SocketChannel client = (SocketChannel)selectionKey.channel();
+                        //如果连接处于正在进行的状态
+                        if (client.isConnectionPending()) {
+                            client.finishConnect();
+
+                            ByteBuffer writeBuffer = ByteBuffer.allocate(1024);
+                            writeBuffer.put((LocalDateTime.now() + " 连接成功!").getBytes());
+
+                            writeBuffer.flip();
+                            client.write(writeBuffer);
+
+                            ExecutorService executorService = Executors.newSingleThreadExecutor(Executors.defaultThreadFactory());
+                            executorService.submit(() -> {
+                                while (true) {
+                                    try {
+
+                                        writeBuffer.clear();
+                                        InputStreamReader input = new InputStreamReader(System.in);
+                                        BufferedReader br = new BufferedReader(input);
+
+                                        String sendMessage = br.readLine();
+                                        writeBuffer.put(sendMessage.getBytes());
+                                        writeBuffer.flip();
+                                        client.write(writeBuffer);
+
+                                    } catch (Exception ex) {
+
+                                    }
+                                }
+                            });
+                        }
+                        //注册读取事件
+                        client.register(selector, SelectionKey.OP_READ);
+                    } else if (selectionKey.isReadable()) {
+                        //第一步永远是类型转换的
+                        SocketChannel client = (SocketChannel)selectionKey.channel();
+
+                        ByteBuffer readBuffer = ByteBuffer.allocate(1024);
+                        int count = client.read(readBuffer);
+                        if (count > 0) {
+                            String receivedMessage = new String(readBuffer.array(), 0, count);
+                            System.out.println(receivedMessage);
+                        }
+                    }
+                }
+
+                keySet.clear();
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }

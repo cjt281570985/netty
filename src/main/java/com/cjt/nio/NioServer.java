@@ -73,6 +73,9 @@ public class NioServer {
                                 for (Map.Entry<String, SocketChannel> entry : clientMap.entrySet()) {
                                     SocketChannel value = entry.getValue();
 
+                                    /*if (client == entry.getValue()) {
+                                        continue;
+                                    }*/
                                     ByteBuffer writeByffer = ByteBuffer.allocate(1024);
                                     writeByffer.put((senderKey + ": " + receivedMessage).getBytes());
 
@@ -80,13 +83,9 @@ public class NioServer {
 
                                     value.write(writeByffer);
                                 }
-
-
                             }
 
                         }
-
-
 
                     } catch (Exception e) {
                         e.printStackTrace();

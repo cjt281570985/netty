@@ -27,22 +27,22 @@ public class TestFile {
 		for (File ff :files) {
 
 		}
-//
-//
-//		String[] names =  f.list(new FilenameFilter() {
-//			@Override
-//			public boolean accept(File dir, String name) {
-//				if(name.endsWith(".rar")){
-//					return true;
-//				}
-//				return false;
-//			}
-//		});
-//
-//		for (String name : names) {
-//			System.out.println(name);
-//		}
-//		System.out.println(names.length);
+
+
+		String[] names =  f.list(new FilenameFilter() {
+			@Override
+			public boolean accept(File dir, String name) {
+				if(name.endsWith(".rar")){
+					return true;
+				}
+				return false;
+			}
+		});
+
+		for (String name : names) {
+			System.out.println(name);
+		}
+		System.out.println(names.length);
 		
 	}
 

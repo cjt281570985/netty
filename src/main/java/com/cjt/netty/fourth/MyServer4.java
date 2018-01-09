@@ -9,6 +9,8 @@ import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 
 public class MyServer4 {
+
+    //心跳检测
     public static void main(String[] args) throws Exception {
         //本例子启动的客户端用其他例子的客户端启动即可
 

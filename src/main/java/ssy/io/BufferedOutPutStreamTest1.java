@@ -17,5 +17,6 @@ public class BufferedOutPutStreamTest1 {
         //不调用close则无法写入数据
         //该close的方法FilterOutputStream调用其flush方法，然后调用close其基础输出流的方法
         bos.close();
+        os.close();
     }
 }

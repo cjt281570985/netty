@@ -16,7 +16,10 @@ public class NioTest8 {
         FileChannel inputChannel = inputStream.getChannel();
         FileChannel outputChannel = outputStream.getChannel();
 
+        //ByteBuffer buffer = ByteBuffer.wrap(byte[] bytes);
+        //可通过修改数组参数bytes 或 buffer来改变值,有些危险
         ByteBuffer buffer = ByteBuffer.allocateDirect(78);
+
 
         System.out.println("while limit: " + buffer.limit());
         System.out.println("while capacity: " + buffer.capacity());

@@ -16,7 +16,7 @@ public class NioTest6 {
         }
 
         buffer.position(2);
-        buffer.limit(6);
+        buffer.limit(6);  //包含2不包含6的位置
 
         ByteBuffer sliceBuffer = buffer.slice();// 截取共享的子序列 会同步修改
 

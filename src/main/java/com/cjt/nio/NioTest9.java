@@ -7,6 +7,7 @@ import java.nio.channels.FileChannel;
 
 public class NioTest9 {
 
+    //39   内存映射文件
     public static void main(String[] args) throws Exception{
 
         RandomAccessFile randomAccessFile = new RandomAccessFile("NioTest9.txt", "rw");

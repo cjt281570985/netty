@@ -24,9 +24,9 @@ public class NioTest4 {
 
         while (true) {
 
-           // buffer.clear(); //注释此 P和L的位置是同一个,不可能再写,读取到就为0 36
+            buffer.clear(); //注释此 P和L的位置是同一个,不可能再写,读取到就为0    36
             int read = inputChannel.read(buffer);
-            System.out.println("read: " + read);
+            System.out.println("read : " + read);
 
             if (-1 == read) {
                 break;

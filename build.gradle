@@ -29,7 +29,9 @@ dependencies {
             //24 add lib
             "io.grpc:grpc-netty:1.4.0",
             "io.grpc:grpc-protobuf:1.4.0",
-            "io.grpc:grpc-stub:1.4.0"
+            "io.grpc:grpc-stub:1.4.0",
+            "org.apache.tomcat:tomcat-websocket-api:8.0.49",
+            "javax.websocket:javax.websocket-api:1.1"
 
     )
 }

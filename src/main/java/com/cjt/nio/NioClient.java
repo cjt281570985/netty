@@ -78,6 +78,7 @@ public class NioClient {
                     }
                 }
 
+                //清除已经处理完的
                 keySet.clear();
             }
 

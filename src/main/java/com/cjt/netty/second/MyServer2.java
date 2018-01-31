@@ -18,6 +18,7 @@ public class MyServer2 {
 
         try {
 
+            //ServerBootstrap 只是netty一个辅助类而已,设定相关属性参数而已
             ServerBootstrap serverBootstrap = new ServerBootstrap();
             serverBootstrap.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class)
                     .childHandler(new MyServerInitializer2());

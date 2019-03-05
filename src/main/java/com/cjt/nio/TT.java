@@ -1,27 +1,34 @@
 package com.cjt.nio;
 
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.nio.Buffer;
 import java.nio.ByteBuffer;
-import java.nio.channels.FileChannel;
 
 public class TT {
 
     public static void main(String[] args) throws Exception{
 
-        FileInputStream fileInputStream = new FileInputStream("nio3.txt");
-        FileChannel channel = fileInputStream.getChannel();
+        ByteBuffer buffer = ByteBuffer.allocate(10);
 
-        ByteBuffer buffer = ByteBuffer.allocate(1024);
+        for (int i = 0; i < buffer.capacity(); i++) {
+            buffer.put((byte) i);
+        }
 
-        channel.read(buffer);
-        buffer.flip();
+        buffer.position(3);
+        buffer.limit(6);
 
-        while (buffer.remaining()>0) {
-            byte b = buffer.get();
-            System.out.print((char) b);
+        ByteBuffer slice = buffer.slice();
+
+        for (int i = 0; i < slice.capacity(); i++) {
+            byte b = slice.get();
+            b *= 2;
+            slice.put(i, b);
+        }
+
+        buffer.position(0);
+        buffer.limit(buffer.capacity());
+
+        while (buffer.hasRemaining()) {
+            System.out.println(buffer.get());
         }
 
     }

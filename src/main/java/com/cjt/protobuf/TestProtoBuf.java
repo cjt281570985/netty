@@ -1,7 +1,5 @@
 package com.cjt.protobuf;
 
-import java.util.Random;
-
 public class TestProtoBuf {
 
 

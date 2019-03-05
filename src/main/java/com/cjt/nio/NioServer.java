@@ -39,6 +39,7 @@ public class NioServer {
                     final SocketChannel client; //serverSocketChannel关注的是数据的读取事件
 
                     try {
+                        //isAcceptable 表示客户端向服务端发起了一个连接
                         if (selectionKey.isAcceptable()) {
                             ServerSocketChannel server = (ServerSocketChannel)selectionKey.channel();
                             //此处对于ServerSocketChannel用不上了,转而建立新的连接client

@@ -12,6 +12,7 @@ public class StudentServiceimpl extends StudentServiceGrpc.StudentServiceImplBas
         //super.getRealNameByUsername(request, responseObserver);
         System.out.println("接收到客户端的信息: " + request.getUsername());
 
+        //25 MyResponse 通过 proto方式构造
         responseObserver.onNext(MyResponse.newBuilder().setRealname("张三").build());
         responseObserver.onCompleted();
     }

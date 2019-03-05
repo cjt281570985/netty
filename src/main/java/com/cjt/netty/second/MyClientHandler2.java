@@ -12,7 +12,8 @@ public class MyClientHandler2 extends SimpleChannelInboundHandler<String> {
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
         System.out.println(ctx.channel().remoteAddress());
-        ctx.channel().writeAndFlush("client output: " + msg);
+        System.out.println("client output: " + msg);
+        //ctx.channel().writeAndFlush("client output: " + msg);
 
         ctx.writeAndFlush("from client: " + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
     }

@@ -1,0 +1,14 @@
+syntax = "proto2";
+
+package com.cjt.protobuf;
+
+option optimize_for = SPEED;
+option java_package = "com.cjt.protobuf";
+option java_outer_classname = "EmpInfo";
+
+message Employee {
+  required string name = 1 ;
+  optional int32 age = 2 ;
+  optional string sex = 3 ;
+}
+

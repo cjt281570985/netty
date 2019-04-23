@@ -1,4 +1,4 @@
-package com.cjt.netty.handler;
+package com.cjt.netty.hh;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
@@ -16,7 +16,7 @@ public class MyClient {
             Bootstrap bootstrap = new Bootstrap();
             bootstrap.group(eventLoopGroup).channel(NioSocketChannel.class).handler(new MyClientInitializer());
 
-            ChannelFuture channelFuture = bootstrap.connect("localhost", 8888).sync();
+            ChannelFuture channelFuture = bootstrap.connect("localhost", 3333).sync();
             channelFuture.channel().closeFuture().sync();
         } finally {
             eventLoopGroup.shutdownGracefully();

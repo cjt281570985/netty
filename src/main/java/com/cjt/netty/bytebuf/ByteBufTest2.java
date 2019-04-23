@@ -14,17 +14,19 @@ import java.util.Iterator;
 public class ByteBufTest2 {
 
   /**
-   * 79
+   *
    * @param args
    */
   public static void main(String[] args) {
 
-    CompositeByteBuf compositeByteBuf = Unpooled.compositeBuffer();
+    //composite buffer (可认为是一个容器或一个列表可容纳heap buffer或direct buffer)   此种是 java没提供
+    CompositeByteBuf compositeByteBuf = Unpooled.compositeBuffer(); //返回一个没有组件的新big-endian复合缓冲区
 
     ByteBuf heapBuf = Unpooled.buffer(10);
     ByteBuf directBuf = Unpooled.directBuffer(8);
 
     compositeByteBuf.addComponents(heapBuf, directBuf);
+    compositeByteBuf.removeComponent(0);
 
     Iterator<ByteBuf> it = compositeByteBuf.iterator();
     while (it.hasNext()) {

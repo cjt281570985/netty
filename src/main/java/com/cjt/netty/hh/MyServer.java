@@ -1,4 +1,4 @@
-package com.cjt.netty.handler;
+package com.cjt.netty.hh;
 
 
 import io.netty.bootstrap.ServerBootstrap;
@@ -20,7 +20,7 @@ public class MyServer {
             ServerBootstrap serverBootstrap = new ServerBootstrap();
             serverBootstrap.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class)//.handler()
                     .childHandler(new MyServerInitializer());
-            ChannelFuture channelFuture = serverBootstrap.bind(8888).sync();
+            ChannelFuture channelFuture = serverBootstrap.bind(3333).sync();
             channelFuture.channel().closeFuture().sync();
         } finally {
             //优雅关闭

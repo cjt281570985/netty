@@ -1,4 +1,4 @@
-package com.cjt.netty.handler;
+package com.cjt.netty.h02;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
@@ -8,6 +8,11 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 
 public class MyClient {
 
+    /**
+     * 此例子是粘包
+     * @param args
+     * @throws Exception
+     */
     public static void main(String[] args) throws  Exception {
 
         EventLoopGroup eventLoopGroup = new NioEventLoopGroup();
@@ -16,7 +21,7 @@ public class MyClient {
             Bootstrap bootstrap = new Bootstrap();
             bootstrap.group(eventLoopGroup).channel(NioSocketChannel.class).handler(new MyClientInitializer());
 
-            ChannelFuture channelFuture = bootstrap.connect("localhost", 8888).sync();
+            ChannelFuture channelFuture = bootstrap.connect("localhost", 1111).sync();
             channelFuture.channel().closeFuture().sync();
         } finally {
             eventLoopGroup.shutdownGracefully();

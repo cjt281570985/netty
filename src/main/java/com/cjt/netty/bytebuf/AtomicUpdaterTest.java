@@ -8,6 +8,7 @@ package com.cjt.netty.bytebuf;
 public class AtomicUpdaterTest {
 
 
+  // 83  22.30
   public static void main(String[] args) {
 
     Person person = new Person();
@@ -15,7 +16,7 @@ public class AtomicUpdaterTest {
     for (int i = 0; i < 10; i++) {
       Thread thread = new Thread(() -> {
         try {
-          Thread.sleep(310);
+          Thread.sleep(50);
         } catch (InterruptedException e) {
           e.printStackTrace();
         }

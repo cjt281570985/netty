@@ -25,6 +25,7 @@ public class MyChatServerHandler3 extends SimpleChannelInboundHandler<String> {
 
     @Override
     public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
+        System.out.println("handlerAdded");
         Channel channel = ctx.channel();
         channelGroup.writeAndFlush("[服务器] - " + channel.remoteAddress() + " 加入\n");
         channelGroup.add(channel);
@@ -32,6 +33,7 @@ public class MyChatServerHandler3 extends SimpleChannelInboundHandler<String> {
 
     @Override
     public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
+        System.out.println("handlerRemoved");
         Channel channel = ctx.channel();
         channelGroup.writeAndFlush("[服务器] - " + channel.remoteAddress() + " 离开\n");
         //channelGroup.remove(channel); netty会自动执行该操作, 无需要编写此行代码
@@ -40,12 +42,14 @@ public class MyChatServerHandler3 extends SimpleChannelInboundHandler<String> {
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
+        System.out.println("channelActive");
         Channel channel = ctx.channel();
         System.out.println(channel.remoteAddress() + " 上线\n");;
     }
 
     @Override
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+        System.out.println("channelInactive");
         Channel channel = ctx.channel();
         System.out.println(channel.remoteAddress() + " 下线\n");;
     }

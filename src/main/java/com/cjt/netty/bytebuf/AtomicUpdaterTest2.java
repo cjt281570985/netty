@@ -11,13 +11,12 @@ public class AtomicUpdaterTest2 {
 
   public static void main(String[] args) {
     Student student = new Student();
-    AtomicIntegerFieldUpdater<Student> atomicIntegerFieldUpdater = AtomicIntegerFieldUpdater
-        .newUpdater(Student.class, "age");
+    AtomicIntegerFieldUpdater<Student> atomicIntegerFieldUpdater = AtomicIntegerFieldUpdater.newUpdater(Student.class, "age");
 
     for (int i = 0; i < 10; i++) {
       Thread thread = new Thread(() -> {
         try {
-          Thread.sleep(310);
+          Thread.sleep(20);
         } catch (InterruptedException e) {
           e.printStackTrace();
         }

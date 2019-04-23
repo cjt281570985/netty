@@ -1,7 +1,9 @@
-package com.cjt.netty.handler;
+package com.cjt.netty.h;
 
+import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
+import java.nio.charset.Charset;
 
 public class MyClientHandler extends SimpleChannelInboundHandler<Long> {
 
@@ -17,8 +19,8 @@ public class MyClientHandler extends SimpleChannelInboundHandler<Long> {
     //客户端一启动,最先执行的是 channelActive()
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        ctx.writeAndFlush(123456L);
-
+       ctx.writeAndFlush(123456L);
+       // ctx.writeAndFlush(Unpooled.copiedBuffer("cjt5207890", Charset.forName("utf-8")));
     }
 
     @Override
